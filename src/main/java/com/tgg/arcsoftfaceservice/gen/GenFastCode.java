@@ -35,7 +35,7 @@ public class GenFastCode {
                 // 策略配置
                 .strategyConfig(builder -> {
                     builder.
-                            addInclude("sys_dict_data","sys_dict_type") // 设置需要生成的表名
+                            addInclude(" "," ") // 设置需要生成的表名
                             .addTablePrefix("t_", "c_") // 设置过滤表前缀
 
                             // entity 策略配置

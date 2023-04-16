@@ -3,6 +3,8 @@ package com.tgg.arcsoftfaceservice.mapper;
 import com.tgg.arcsoftfaceservice.pojo.SysDictData;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * <p>
@@ -14,5 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface SysDictDataMapper extends BaseMapper<SysDictData> {
-
+    @Update("UPDATE sys_dict_data SET dict_type = #{new_type} WHERE dict_type = #{old_type};")
+    Integer updateType(@Param("old_type") String old_type, @Param("new_type") String new_type);
 }

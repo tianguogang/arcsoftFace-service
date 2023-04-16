@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,8 +21,7 @@ import lombok.Setter;
  * @author 田国刚
  * @since 2023-04-16
  */
-@Getter
-@Setter
+@Data
 @TableName("sys_dict_type")
 public class SysDictType implements Serializable {
 
