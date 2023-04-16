@@ -32,6 +32,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
         <!-- MyBatis-Plus -->
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
         <dependency>
@@ -98,6 +103,7 @@
             <systemPath>${project.basedir}/src/main/resources/libs/arcsoft-sdk-face-3.0.0.0.jar
             </systemPath>
         </dependency>
+
 
     </dependencies>
 
