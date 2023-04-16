@@ -88,6 +88,17 @@
             <artifactId>hutool-all</artifactId>
             <version>5.8.13</version>
         </dependency>
+
+        <!--加载本地jar包-->
+        <dependency>
+            <groupId>sunjce_provider</groupId>
+            <artifactId>sunjce_provider</artifactId>
+            <version>0.0.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/libs/arcsoft-sdk-face-3.0.0.0.jar
+            </systemPath>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -95,6 +106,18 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <!-- 可以把依赖的包都打包到生成的Jar包中 -->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
