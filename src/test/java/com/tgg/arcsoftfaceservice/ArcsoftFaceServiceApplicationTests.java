@@ -13,8 +13,6 @@ class ArcsoftFaceServiceApplicationTests {
 
     @Test
     void contextLoads() {
-        FaceEngineUtil faceEngineUtil = new FaceEngineUtil();
-        HashMap<String, Object> userInfo = faceEngineUtil.getUserInfo(new File("D:\\FileTest\\1.jpg"));
-    }
+           }
 
 }

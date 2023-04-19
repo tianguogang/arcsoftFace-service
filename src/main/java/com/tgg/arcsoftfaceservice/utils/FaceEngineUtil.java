@@ -18,24 +18,11 @@ import java.util.List;
 import static com.arcsoft.face.toolkit.ImageFactory.getRGBData;
 
 public class FaceEngineUtil {
-    @Resource
-    SysDictDataMapper sysDictDataMapper;
 
 
-    public FaceEngineUtil() {
-        QueryWrapper<SysDictData> sysDictDataQueryWrapper = new QueryWrapper<>();
-        sysDictDataQueryWrapper.eq("dict_type","arc_saft");
-        List<SysDictData> sysDictData = sysDictDataMapper.selectList(sysDictDataQueryWrapper);
-            String appId = " ";
-            String sdkKey = " ";
-        for (SysDictData e:sysDictData) {
-            if (e.getDictLabel().equals("appId")){
-                appId=e.getDictValue();
-            }  if (e.getDictLabel().equals("sdkKey")){
-                sdkKey=e.getDictValue();
-            }
 
-        }
+    public FaceEngineUtil(String  appId,String sdkKey) {
+
         //激活引擎
         errorCode = faceEngine.activeOnline(appId, sdkKey);
 
@@ -87,12 +74,20 @@ public class FaceEngineUtil {
         //人脸检测
         ImageInfo imageInfo = getRGBData(file);
         List<FaceInfo> faceInfoList = new ArrayList<FaceInfo>();
-        errorCode = faceEngine.detectFaces(imageInfo.getImageData(), imageInfo.getWidth(), imageInfo.getHeight(), imageInfo.getImageFormat(), faceInfoList);
+        try {
+            errorCode = faceEngine.detectFaces(imageInfo.getImageData(), imageInfo.getWidth(), imageInfo.getHeight(), imageInfo.getImageFormat(), faceInfoList);
+        } catch (Exception e) {
+          return null;
+        }
         System.out.println(faceInfoList);
 
         //特征提取
         FaceFeature faceFeature = new FaceFeature();
-        errorCode = faceEngine.extractFaceFeature(imageInfo.getImageData(), imageInfo.getWidth(), imageInfo.getHeight(), imageInfo.getImageFormat(), faceInfoList.get(0), faceFeature);
+        try {
+            errorCode = faceEngine.extractFaceFeature(imageInfo.getImageData(), imageInfo.getWidth(), imageInfo.getHeight(), imageInfo.getImageFormat(), faceInfoList.get(0), faceFeature);
+    } catch (Exception e) {
+        return null;
+    }
         return faceFeature;
     }
 
