@@ -131,9 +131,9 @@ public class FactInfoController {
             FaceSimilar faceSimilar = faceEngineUtil.compareFaceFeature(faceFeature, bean);
             if (faceSimilar.getScore() > 0.78) {
                 map.put("code", 200);
-                map.put("data", e);
+                map.put("data", faceEngineUtil.getUserInfo(faceImg));
                 map.put("message", "恭喜" + e.getName() + "打卡成功！");
-                map.put("userInfo", faceEngineUtil.getUserInfo(faceImg));
+                map.put("userInfo",e );
                 return new ResponseEntity<>(map, HttpStatus.OK);
             }
         }

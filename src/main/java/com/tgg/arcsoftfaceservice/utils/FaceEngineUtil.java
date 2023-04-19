@@ -18,9 +18,9 @@ import java.util.List;
 import static com.arcsoft.face.toolkit.ImageFactory.getRGBData;
 
 public class FaceEngineUtil {
-
-
-
+    int errorCode;
+    FaceEngine faceEngine = new FaceEngine("D:\\program\\NewMedia\\arcsoftFace\\arcsoftFace-service\\src\\main\\resources\\libs\\WIN64");
+//初始化引擎
     public FaceEngineUtil(String  appId,String sdkKey) {
 
         //激活引擎
@@ -65,9 +65,6 @@ public class FaceEngineUtil {
     }
 
     //    获取人脸特征
-    FaceEngine faceEngine = new FaceEngine("D:\\program\\NewMedia\\arcsoftFace\\arcsoftFace-service\\src\\main\\resources\\libs\\WIN64");
-    int errorCode;
-
     public FaceFeature getFaceFeature(File file) {
 
 
